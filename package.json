@@ -1,14 +1,14 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
+      "require": "./dist/index.d.cts",
       "import": "./dist/index.d.ts"
     }
   },
