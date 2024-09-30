@@ -14,14 +14,16 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
+type TButton = (props: ButtonProps) => JSX.Element
+
 /** Primary UI component for user interaction */
-export const Button = ({
+export const Button: TButton = ({
   primary = false,
   size = 'medium',
   backgroundColor,
   label,
   ...props
-}: ButtonProps) => {
+}) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button
