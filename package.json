@@ -1,7 +1,7 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -13,12 +13,6 @@
     "splitting": false,         
     "clean": true,              
     "jsx": "automatic"          
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
   },
   "scripts": {
     "dev": "vite",
