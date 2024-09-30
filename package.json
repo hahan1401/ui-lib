@@ -1,11 +1,19 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "./dist/index.d.ts",
+  "tsup": {
+    "entry": ["src/index.ts"], 
+    "format": ["cjs", "esm"],   
+    "dts": true,                
+    "splitting": false,         
+    "clean": true,              
+    "jsx": "automatic"          
+  },
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
