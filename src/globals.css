@@ -36,3 +36,15 @@ html {
   --hahan-chart-4: 242 206 109;
   --hahan-chart-5: 255 184 92
 }
+
+
+
+@keyframes slide {
+	from {
+		left: -200%;
+	}
+
+	to {
+		left: 200%;
+	}
+}

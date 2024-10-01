@@ -1,0 +1,30 @@
+.wrapper {
+	--center-color: rgb(255 255 255 / 80%);
+	--right-color: transparent;
+	--left-color: transparent;
+	--time: 2s;
+	position: relative;
+
+	&::after {
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, var(--left-color), var(--center-color), var(--right-color));
+		animation: slide var(--time) infinite;
+		content: '';
+	}
+
+	overflow: hidden;
+}
+
+@keyframes slide {
+	from {
+		left: -200%;
+	}
+
+	to {
+		left: 200%;
+	}
+}

@@ -26,10 +26,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "rootDir": ".",
     "paths": {
       "@/*": ["./src/*"],
     }
   },
-  "include": ["./src", "**/*.ts", "**/*.tsx"],
+  "files": ["src/declarations.d.ts"],
+  "include": ["./src/*", "**/*.ts", "**/*.tsx", "**/*.d.ts"],
   "exclude": ["node_modules"]
 }

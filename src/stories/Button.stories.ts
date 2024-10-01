@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button, ButtonProps } from '../components/Button/Button';
 
-const buttonMeta: unknown = {
+const metaData: unknown = {
   title: 'Example/Button',
   component: Button,
   parameters: {
@@ -11,7 +11,7 @@ const buttonMeta: unknown = {
   tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
-export default buttonMeta;
+export default metaData;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 type Story = StoryObj<ButtonProps>;
