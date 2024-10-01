@@ -1,7 +1,7 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.16.1.5",
+  "version": "0.1.17",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -11,7 +11,8 @@
     "dist/index.js",
     "dist/index.css",
     "dist/index.d.ts",
-    "dist/components"
+    "dist/components",
+    "dist/types"
   ],
   "scripts": {
     "dev": "vite",
@@ -24,8 +25,15 @@
     "chromatic": "npx chromatic --project-token=chpt_7dafcf1c5d97686"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.446.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.24.7",
