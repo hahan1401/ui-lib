@@ -1,57 +1,71 @@
-import { babel } from "@rollup/plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import terser from "@rollup/plugin-terser";
-import typescript from "@rollup/plugin-typescript";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import postcss from "rollup-plugin-postcss";
+import { babel } from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
 
 // This is required to read package.json file when
 // using Native ES modules in Node.js
 // https://rollupjs.org/command-line-interface/#importing-package-json
-import { createRequire } from "node:module";
+import { createRequire } from 'node:module';
 const requireFile = createRequire(import.meta.url);
-const packageJson = requireFile("./package.json");
+const packageJson = requireFile('./package.json');
 
 export default [
   {
-    input: "src/index.ts",
+    input: 'src/index.ts',
     output: [
       {
         file: packageJson.main,
-        format: "cjs",
+        format: 'cjs',
         // sourcemap: true,
       },
       {
         file: packageJson.module,
-        format: "esm",
-        exports: "named",
+        format: 'esm',
+        exports: 'named',
         // sourcemap: true,
       },
     ],
     plugins: [
       typescript({
         // Compile TypeScript using `tsconfig.json`
-        tsconfig: "./tsconfig.json",
+        tsconfig: './tsconfig.json',
         declaration: true, // Ensure `.d.ts` files are generated
-        declarationDir: "./dist", // Place `.d.ts` files in the `dist` directory
-        rootDir: "./src", // Specify the root directory for the declaration files
+        declarationDir: './dist', // Place `.d.ts` files in the `dist` directory
+        rootDir: './src', // Specify the root directory for the declaration files
+        paths: {
+          '@/*': ['./src/*'],
+        },
       }),
       peerDepsExternal(),
       postcss({
         plugins: [],
+        extensions: ['.css', '.scss'],
+        minimize: true,
+        inject: {
+          insertAt: 'top',
+        },
+        extract: true,
       }),
       resolve({
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       }),
       commonjs(),
       terser(),
       babel({
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-        exclude: "node_modules/**",
-        presets: ["@babel/preset-react", "@babel/preset-typescript"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        exclude: 'node_modules/**',
+        presets: ['@babel/preset-react', '@babel/preset-typescript'],
       }),
     ],
-    external: ["react", "react-dom", "@emotion/react", "@emotion/styled"],
+    external: [
+      'react',
+      'react-dom',
+      '@emotion/react',
+      '@emotion/styled',
+    ],
   },
 ];

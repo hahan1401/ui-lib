@@ -1,5 +1,5 @@
-import '@/globals.css';
 import './button.css';
+import '../../../src/globals.css';
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
