@@ -1,3 +1,5 @@
+@import url('../../globals.css');
+
 .storybook-button {
   display: inline-block;
   cursor: pointer;
