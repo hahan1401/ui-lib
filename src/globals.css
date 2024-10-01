@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --color-primary: 30 167 253
-    --color-secondary: 30 167 253
+html {
+    --color-primary: 30 167 253;
+    --color-primary-foreground: 226 232 240;
+    --color-secondary: 226 232 240;
+    --color-secondary-foreground: 30 167 253;
 }

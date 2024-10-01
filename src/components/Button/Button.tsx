@@ -1,24 +1,23 @@
+import { Size, Variant } from '@/types/common';
 import '../../../src/globals.css';
 import './button.css';
+import { ReactNode } from 'react';
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
-  primary?: boolean;
-  /** What background color to use */
-  backgroundColor?: string;
+  variant: Variant
   /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
+  size?: Size;
   /** Button contents */
-  label: string;
-  /** Optional click handler */
-  onClick?: () => void;
+
+  children?: ReactNode
 }
 
 /** Primary UI component for user interaction */
 export const Button = ({
   // primary = false,
   size = 'medium',
-  label,
+  children,
   ...props
 }: ButtonProps) => {
   // const mode = primary
@@ -27,10 +26,10 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={`storybook-button storybook-button--${size} bg-primary`}
+      className={`storybook-button storybook-button--${size} bg-secondary`}
       {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
