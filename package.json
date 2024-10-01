@@ -17,7 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-lib": "rollup -c",
-    "build-lib:types": "tsc -p tsconfig.json --emitDeclarationOnly"
+    "chromatic": "npx chromatic --project-token=chpt_7dafcf1c5d97686"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -44,6 +44,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "chromatic": "^11.11.0",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
