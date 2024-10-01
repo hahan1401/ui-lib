@@ -13,11 +13,6 @@ import { createRequire } from "node:module";
 const requireFile = createRequire(import.meta.url);
 const packageJson = requireFile("./package.json");
 
-const typescriptOptions = {
-  exclude: ["tests/**/*"],
-  compilerOptions: { declaration: false },
-};
-
 export default [
   {
     input: "src/index.ts",
@@ -35,7 +30,7 @@ export default [
       },
     ],
     plugins: [
-      typescript(typescriptOptions),
+      typescript(),
       peerDepsExternal(),
       postcss({
         plugins: [],
