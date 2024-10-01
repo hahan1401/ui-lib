@@ -30,7 +30,13 @@ export default [
       },
     ],
     plugins: [
-      typescript(),
+      typescript({
+        // Compile TypeScript using `tsconfig.json`
+        tsconfig: "./tsconfig.json",
+        declaration: true, // Ensure `.d.ts` files are generated
+        declarationDir: "./dist", // Place `.d.ts` files in the `dist` directory
+        rootDir: "./src", // Specify the root directory for the declaration files
+      }),
       peerDepsExternal(),
       postcss({
         plugins: [],

@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "esModuleInterop": true,
-    "declarationDir": "./dist/types",
+    "declarationDir": "./dist",
     "resolveJsonModule": true,
 
     /* Bundler mode */
