@@ -1,7 +1,7 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.15",
+  "version": "0.1.16",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -20,7 +20,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-lib": "rm -rf ./dist && rollup -c",
+    "build-lib": "rm -rf ./dist && rollup -c && ./scripts/addCss.sh",
     "chromatic": "npx chromatic --project-token=chpt_7dafcf1c5d97686"
   },
   "dependencies": {

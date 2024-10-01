@@ -47,7 +47,7 @@ export default [
       // css({ output: 'index.css' }),
       postcss({
         plugins: [tailwindcss, autoprefixer],
-        // extract: true,
+        extract: true,
         minimize: true,
         inject: true
       }),
