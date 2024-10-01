@@ -1,7 +1,7 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.14",
+  "version": "0.1.14.1",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -10,7 +10,8 @@
     "dist/index.cjs",
     "dist/index.js",
     "dist/index.css",
-    "dist/index.d.ts"
+    "dist/index.d.ts",
+    "dist/components"
   ],
   "scripts": {
     "dev": "vite",
