@@ -1,3 +1,4 @@
+import '@/globals.css';
 import './button.css';
 
 export interface ButtonProps {
