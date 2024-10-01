@@ -3,8 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import autoprefixer from 'autoprefixer';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import tailwindcss from 'tailwindcss';
 
 // This is required to read package.json file when
 // using Native ES modules in Node.js
@@ -36,10 +38,15 @@ export default [
         declaration: true, // Ensure `.d.ts` files are generated
         declarationDir: './dist', // Place `.d.ts` files in the `dist` directory
         rootDir: './src', // Specify the root directory for the declaration files
+        paths: {
+          '@/*': ['./src/*'],
+        },
       }),
       peerDepsExternal(),
       postcss({
-        plugins: [],
+        plugins: [tailwindcss, autoprefixer],
+        extract: true,
+        minimize: true,
       }),
       resolve({
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
