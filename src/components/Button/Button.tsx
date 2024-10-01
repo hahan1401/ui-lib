@@ -34,7 +34,7 @@ export const Button = ({
       style={{ backgroundColor }}
       {...props}
     >
-      <div className='w-10 h-5 bg-black'>1111111asd</div>
+      <div className='w-10 h-5 bg-black text-yellow-400'>1111111asd</div>
       {label}
     </button>
   );

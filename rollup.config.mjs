@@ -7,6 +7,7 @@ import autoprefixer from 'autoprefixer';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import tailwindcss from 'tailwindcss';
+import css from 'rollup-plugin-css-only';
 
 // This is required to read package.json file when
 // using Native ES modules in Node.js
@@ -43,10 +44,12 @@ export default [
         },
       }),
       peerDepsExternal(),
+      // css({ output: 'index.css' }),
       postcss({
         plugins: [tailwindcss, autoprefixer],
-        extract: true,
+        // extract: true,
         minimize: true,
+        inject: true
       }),
       resolve({
         extensions: ['.js', '.jsx', '.ts', '.tsx'],

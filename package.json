@@ -1,13 +1,16 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.13",
+  "version": "0.1.14",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/index.cjs",
+    "dist/index.js",
+    "dist/index.css",
+    "dist/index.d.ts"
   ],
   "scripts": {
     "dev": "vite",
@@ -55,6 +58,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "rollup": "^4.22.5",
+    "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.79.4",

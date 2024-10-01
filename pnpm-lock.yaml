@@ -108,6 +108,9 @@ importers:
       rollup:
         specifier: ^4.22.5
         version: 4.22.5
+      rollup-plugin-css-only:
+        specifier: ^4.5.2
+        version: 4.5.2(rollup@4.22.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.22.5)
@@ -2799,6 +2802,12 @@ packages:
   reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+
+  rollup-plugin-css-only@4.5.2:
+    resolution: {integrity: sha512-7rj9+jB17Pz8LNcPgtMUb16JcgD8lxQMK9HcGfAVhMK3na/WXes3oGIo5QsrQQVqtgAU6q6KnQNXJrYunaUIQQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      rollup: <5
 
   rollup-plugin-peer-deps-external@2.2.4:
     resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
@@ -5971,6 +5980,11 @@ snapshots:
       supports-preserve-symlinks-flag: 1.0.0
 
   reusify@1.0.4: {}
+
+  rollup-plugin-css-only@4.5.2(rollup@4.22.5):
+    dependencies:
+      '@rollup/pluginutils': 5.1.2(rollup@4.22.5)
+      rollup: 4.22.5
 
   rollup-plugin-peer-deps-external@2.2.4(rollup@4.22.5):
     dependencies:
