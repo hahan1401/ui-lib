@@ -36,19 +36,10 @@ export default [
         declaration: true, // Ensure `.d.ts` files are generated
         declarationDir: './dist', // Place `.d.ts` files in the `dist` directory
         rootDir: './src', // Specify the root directory for the declaration files
-        paths: {
-          '@/*': ['./src/*'],
-        },
       }),
       peerDepsExternal(),
       postcss({
         plugins: [],
-        extensions: ['.css', '.scss'],
-        minimize: true,
-        inject: {
-          insertAt: 'top',
-        },
-        extract: true,
       }),
       resolve({
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -61,11 +52,6 @@ export default [
         presets: ['@babel/preset-react', '@babel/preset-typescript'],
       }),
     ],
-    external: [
-      'react',
-      'react-dom',
-      '@emotion/react',
-      '@emotion/styled',
-    ],
+    external: ['react', 'react-dom', '@emotion/react', '@emotion/styled'],
   },
 ];

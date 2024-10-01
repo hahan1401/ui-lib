@@ -25,13 +25,6 @@ const config: StorybookConfig = {
       })
     );
 
-    if (config.resolve?.alias) {
-      config.resolve.alias = {
-        ...(config.resolve.alias || {}),
-        '@/*': path.resolve(__dirname, '../src/*'), // Adjust the path to your 'src' directory
-      };
-    }
-
     return config;
   },
 };
