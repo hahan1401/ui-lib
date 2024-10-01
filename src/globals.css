@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.storybook-button {
-    background-color: red !important;
+:root {
+    --color-primary: 30 167 253
+    --color-secondary: 30 167 253
 }
