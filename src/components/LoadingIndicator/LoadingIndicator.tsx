@@ -33,7 +33,6 @@ export const LoadingIndicator = ({
 	variant,
 	...props
 }: LoadingIndicatorProps) => {
-console.log('variant', variant)
 	return (
 		<div
 			className={cn(loadingIndicatorVariants({ variant, className: className }))}

@@ -1,5 +1,5 @@
 .lds-ring {
-	--border-color: var(--hahan-primary);
+	--border-color: rgb(var(--hahan-primary));
 	--border-width: 4px;
 	--size: 32px;
 	display: inline-block;
@@ -18,10 +18,10 @@
 		transform: translate(-50%, -50%);
 		width: var(--size);
 		height: var(--size);
-		border: var(--border-width) solid rgb(var(--border-color));
+		border: var(--border-width) solid var(--border-color);
 		border-radius: 50%;
 		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-		border-color: rgb(var(--border-color)) transparent transparent transparent;
+		border-color: var(--border-color) transparent transparent transparent;
 	}
 
 	>div:nth-child(1) {
