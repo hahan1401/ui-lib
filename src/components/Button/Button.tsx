@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
-import '../../../src/globals.css';
+// import '../../../src/globals.css';
 
 import { cn } from '@/lib/utils';
 import { LoadingIndicator } from '../LoadingIndicator';
@@ -51,8 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 					loadingComponent
 				) : (
 					<LoadingIndicator
-						// className={`!absolute h-full w-full transition-all duration-200 ease-linear ${isLoading ? 'top-0' : '-top-full'}`}
-						className=''
+						className={`!absolute h-full w-full transition-all duration-200 ease-linear ${isLoading ? 'top-0' : '-top-full'}`}
 						variant={variant === 'default' ? 'secondary' : 'default'}
 						size={'20px'}
 					/>

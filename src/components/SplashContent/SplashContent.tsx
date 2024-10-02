@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 import styles from './styles.module.scss';
-import '../../../src/globals.css';
+// import '../../../src/globals.css';
 
 export interface SplashContentProps
   extends React.ButtonHTMLAttributes<HTMLDivElement> {
