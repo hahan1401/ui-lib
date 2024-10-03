@@ -1,7 +1,7 @@
 {
   "name": "hahan-ui-lib",
   "private": false,
-  "version": "0.1.18.8.1",
+  "version": "0.1.18.8.3",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -17,6 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-lib": "rm -rf ./dist && rollup -c && ./scripts/addCss.sh && rm -rf ./dist/stories",
+    "publish": "npm publish && npx chromatic --project-token=chpt_7dafcf1c5d97686",
     "chromatic": "npx chromatic --project-token=chpt_7dafcf1c5d97686"
   },
   "dependencies": {
