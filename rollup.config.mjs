@@ -62,6 +62,6 @@ export default [
         presets: ['@babel/preset-react', '@babel/preset-typescript'],
       }),
     ],
-    external: ['react', 'react-dom', '@emotion/react', '@emotion/styled'],
+    external: ['react', 'react-dom', 'react-code-blocks'],
   },
 ];

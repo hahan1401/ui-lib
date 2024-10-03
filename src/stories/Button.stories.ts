@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonProps } from '../components/Button/Button';
 
 const metaData: unknown = {
-	title: 'Example/Button',
+	title: 'Component/Button',
 	component: Button,
 	parameters: {
 		layout: 'centered',

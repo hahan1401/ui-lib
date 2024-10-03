@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
 
 const metaData: unknown = {
-    title: 'Example/Splash content',
+    title: 'Component/Splash content',
     component: SplashContent,
     parameters: {
         layout: 'centered',

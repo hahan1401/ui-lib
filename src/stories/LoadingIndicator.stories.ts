@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
 
 const metaData: unknown = {
-	title: 'Example/Loading indicator',
+	title: 'Component/Loading indicator',
 	component: LoadingIndicator,
 	parameters: {
 		layout: 'centered',
