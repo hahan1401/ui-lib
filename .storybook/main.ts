@@ -34,5 +34,9 @@ const config: StorybookConfig = {
 
     return config;
   },
+  managerHead: (head) => `
+    ${head}
+    <link rel="stylesheet" href="../src/globals.css" />
+  `,
 };
 export default config;
