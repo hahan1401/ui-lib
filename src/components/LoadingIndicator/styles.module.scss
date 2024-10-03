@@ -6,7 +6,7 @@
 	position: relative;
 
 	&[data-variant='secondary'] {
-		--border-color: var(--hahan-secondary);
+		--border-color: rgb(var(--hahan-secondary));
 	}
 
 	>div {
