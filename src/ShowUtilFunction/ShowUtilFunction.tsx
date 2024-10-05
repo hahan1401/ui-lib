@@ -18,7 +18,7 @@ export const ShowUtilFunction = ({ input, utilFunction, comment }: ShowUtilFunct
 	console.log(output);
 	const code = `//${comment}\nconst input = ${JSON.stringify(input)}\nconst output = removeValueLess(input)\nconsole.log(output)`;
 	return (
-		<div className='custom-code-block'>
+		<div className='custom-code-block' style={{height: 10}}>
 			<CodeBlock
 				customStyle={{
 					with: '100%',

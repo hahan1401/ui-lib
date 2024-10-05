@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html {
-    --hahan-color-primary: 30 167 253;
-    --hahan-color-primary-foreground: 226 232 240;
-    --hahan-color-secondary: 226 232 240;
-    --hahan-color-secondary-foreground: 30 167 253;
-} */
-
 html {
   --hahan-background: 255 255 255;
   --hahan-foreground: 10 10 10;
