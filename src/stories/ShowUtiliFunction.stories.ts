@@ -16,7 +16,7 @@ type Story = StoryObj<ComponentProps<typeof ShowUtilFunction>>;
 
 export const removeValueLess: Story = {
 	args: {
-		input: [1, [2, []], null, 3, undefined, 4, { foo: { value: 1, bar: {} } }],
+		input: "[1, [2, [3], [4]], null, 3, undefined, 4, { foo: { value: 1, bar: {} } }]",
 		utilFunction: 'removeValueLess',
 		comment: 'Remove all null, undefined, [] and {} in complex array or object'
 	},
@@ -25,7 +25,7 @@ export const removeValueLess: Story = {
 
 export const deepClone: Story = {
 	args: {
-		input: { a: { b: { c: { d: 1 } } } },
+		input: '{ a: { b: { c: { d: 1 } } } }',
 		utilFunction: "deepClone",
 		comment: 'Clone value avoid pass by Reference'
 	},

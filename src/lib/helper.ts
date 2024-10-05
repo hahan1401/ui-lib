@@ -47,3 +47,19 @@ export const removeValueLess = <T>(input: T): T => {
 	}
 	return input;
 };
+
+export const uniqBy = <T,>(
+	input: Array<T>,
+	iteratee: (item: T) => unknown,
+): T[] => {
+	const seen = new Set();
+	return input.filter((item) => {
+		const key = iteratee(item);
+		if (seen.has(key)) {
+			return false;
+		} else {
+			seen.add(key);
+			return true;
+		}
+	});
+};
