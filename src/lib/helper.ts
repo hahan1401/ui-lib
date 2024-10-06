@@ -48,10 +48,7 @@ export const removeValueLess = <T>(input: T): T => {
 	return input;
 };
 
-export const uniqBy = <T,>(
-	input: Array<T>,
-	iteratee: (item: T) => unknown,
-): T[] => {
+export const uniqBy = <T>(input: Array<T>, iteratee: (item: T) => unknown = (item) => item): T[] => {
 	const seen = new Set();
 	return input.filter((item) => {
 		const key = iteratee(item);
@@ -63,3 +60,18 @@ export const uniqBy = <T,>(
 		}
 	});
 };
+
+export const intersectionBy = <T,>(...args: (T[] | ((item: T) => unknown))[]): T[] => {
+	let iteratee = (item: T): unknown => item;
+	const mainInput = args[0] as T[];
+	const restInput = args.slice(1).flat(1) as T[];
+
+	if (typeof args.at(-1) === 'function') {
+		iteratee = args.at(-1) as (item: T) => unknown;
+		restInput.pop();
+	}
+
+	const arrayToComparewith = restInput.map(iteratee);
+	const output = mainInput.filter((item) => arrayToComparewith.includes(iteratee(item)));
+	return output;
+}
