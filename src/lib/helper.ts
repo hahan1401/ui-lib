@@ -1,6 +1,17 @@
 const isValuefullArray = (array: Array<unknown>) => array.length > 0;
 const isValuefullObject = (obj: Record<string, unknown>) => Object.keys(obj).length > 0;
 
+export const isEmpty = (input: unknown): boolean => {
+	if (input === null || input === undefined) return true;
+	if (typeof input === 'object') {
+		if (Array.isArray(input)) return input.length > 0 ? false : true;
+
+		const keys = Object.keys(input);
+		return keys.length > 0 ? false : true;
+	}
+	return true;
+};
+
 export const deepClone = <T>(input: T): T => {
 	if (typeof input !== 'object' || input === null) {
 		return input;
@@ -61,7 +72,7 @@ export const uniqBy = <T>(input: Array<T>, iteratee: (item: T) => unknown = (ite
 	});
 };
 
-export const intersectionBy = <T,>(...args: (T[] | ((item: T) => unknown))[]): T[] => {
+export const intersectionBy = <T>(...args: (T[] | ((item: T) => unknown))[]): T[] => {
 	let iteratee = (item: T): unknown => item;
 	const mainInput = args[0] as T[];
 	const restInput = args.slice(1).flat(1) as T[];
@@ -74,4 +85,4 @@ export const intersectionBy = <T,>(...args: (T[] | ((item: T) => unknown))[]): T
 	const arrayToComparewith = restInput.map(iteratee);
 	const output = mainInput.filter((item) => arrayToComparewith.includes(iteratee(item)));
 	return output;
-}
+};

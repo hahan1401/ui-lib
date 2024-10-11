@@ -8,7 +8,7 @@ interface ShowUtilFunctionProps {
 }
 
 export const ShowUtilFunction = ({ input: _input, utilFunction, comment }: ShowUtilFunctionProps) => {
-	const input = eval(_input)
+	const input = eval(_input);
 	const functions: Record<typeof utilFunction, <T>(input: T) => T> = {
 		deepClone: deepClone,
 		removeValueLess: removeValueLess,
@@ -17,7 +17,10 @@ export const ShowUtilFunction = ({ input: _input, utilFunction, comment }: ShowU
 	console.log(output);
 	const code = `//${comment}\nconst input = ${_input}\nconst output = ${utilFunction}(input)\nconsole.log(output)`;
 	return (
-		<div className='custom-code-block' style={{height: 10}}>
+		<div
+			className='custom-code-block'
+			style={{ height: 10 }}
+		>
 			<CodeBlock
 				customStyle={{
 					with: '100%',

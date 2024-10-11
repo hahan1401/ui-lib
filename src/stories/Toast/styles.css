@@ -1,0 +1,4 @@
+div:has(.innerZoomElementWrapper) {
+    width: 100%;
+    overflow: hidden;
+}

@@ -17,8 +17,8 @@ html {
   --hahan-muted-foreground: 115 115 115;
   --hahan-accent: 245 245 245;
   --hahan-accent-foreground: 23 23 23;
-  --hahan-destructive: 255 51 51;
-  --hahan-destructive-foreground: 250 250 250;
+  --hahan-error: 255 51 51;
+  --hahan-error-foreground: 250 250 250;
   --hahan-border: 229 229 229;
   --hahan-input: 229 229 229;
   --hahan-ring: 230 35 35;

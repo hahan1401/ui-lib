@@ -34,9 +34,9 @@ export default {
   				DEFAULT: 'rgba(var(--hahan-accent) / <alpha-value>)',
   				foreground: 'rgba(var(--hahan-accent-foreground) / <alpha-value>)'
   			},
-  			destructive: {
-  				DEFAULT: 'rgba(var(--hahan-destructive) / <alpha-value>)',
-  				foreground: 'rgba(var(--hahan-destructive-foreground) / <alpha-value>)'
+  			error: {
+  				DEFAULT: 'rgba(var(--hahan-error) / <alpha-value>)',
+  				foreground: 'rgba(var(--hahan-error-foreground) / <alpha-value>)'
   			},
   			border: 'rgba(var(--hahan-border) / <alpha-value>)',
   			input: 'rgba(var(--hahan-input) / <alpha-value>)',
