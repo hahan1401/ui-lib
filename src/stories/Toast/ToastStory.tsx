@@ -2,7 +2,7 @@ import { Button, Toaster } from '../../components';
 import { useToast } from '../../hooks/use-toast';
 import './styles.css';
 
-const ToastStory = ({ toastLimit }: { toastLimit?: number }) => {
+const ToastStory = ({ toastLimit, variant = 'default' }: { toastLimit?: number; variant?: 'default' | 'error' }) => {
 	const { toast } = useToast({
 		max: toastLimit,
 	});
@@ -14,6 +14,7 @@ const ToastStory = ({ toastLimit }: { toastLimit?: number }) => {
 					toast({
 						title: `title`,
 						description: 'description',
+						variant: variant,
 					});
 				}}
 			>
