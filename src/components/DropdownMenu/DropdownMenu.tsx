@@ -53,10 +53,13 @@ export const DropdownMenu = ({
 					setIsShowDopdown((prev) => !prev);
 				}}
 				onMouseEnter={() => {
-					setIsShowDopdown(true);
+					trigger === 'hover' && setIsShowDopdown(true);
 				}}
 				onMouseLeave={() => {
-					setIsShowDopdown(false);
+					trigger === 'hover' && setIsShowDopdown(false);
+				}}
+				onBlur={() => {
+					// setIsShowDopdown(false);
 				}}
 			>
 				<Button>Target</Button>
@@ -65,7 +68,10 @@ export const DropdownMenu = ({
 			<div
 				className={cn(`absolute inline-block min-w-64 ${isShowDropdown ? 'visible z-10' : 'invisible z-[-1]'}`)}
 				onMouseEnter={() => {
-					setIsShowDopdown(true);
+					trigger === 'hover' && setIsShowDopdown(true);
+				}}
+				onMouseLeave={() => {
+					trigger === 'hover' && setIsShowDopdown(false);
 				}}
 			>
 				<DropdownContent

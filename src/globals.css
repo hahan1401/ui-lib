@@ -43,3 +43,13 @@ html {
 		left: 200%;
 	}
 }
+
+@keyframes growHeight {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: calc-size(auto);
+  }
+}

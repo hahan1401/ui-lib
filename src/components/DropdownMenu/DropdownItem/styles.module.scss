@@ -1,0 +1,20 @@
+.dropdown-item-group-wrapper {
+	display: none;
+
+	&[data-show='true'] {
+		display: block;
+	}
+}
+
+.item-label {
+	:global {
+		.arrow {
+			transition: transform 0.3s;
+			transform: rotate(0deg);
+
+			&[data-open='true'] {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}
