@@ -1,17 +1,18 @@
-import { deepClone, removeValueLess } from '@/lib';
+import { deepClone, isEqual, removeValueLess } from '@/lib';
 import { CodeBlock, dracula } from 'react-code-blocks';
 
 interface ShowUtilFunctionProps {
 	input: string;
-	utilFunction: 'deepClone' | 'removeValueLess';
+	utilFunction: 'deepClone' | 'removeValueLess' | 'isEqual';
 	comment?: string;
 }
 
 export const ShowUtilFunction = ({ input: _input, utilFunction, comment }: ShowUtilFunctionProps) => {
 	const input = eval(_input);
-	const functions: Record<typeof utilFunction, <T>(input: T) => T> = {
+	const functions: any = {
 		deepClone: deepClone,
 		removeValueLess: removeValueLess,
+		isEqual: isEqual,
 	};
 	const output = functions[utilFunction](input);
 	console.log(output);

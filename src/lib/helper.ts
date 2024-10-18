@@ -86,3 +86,37 @@ export const intersectionBy = <T>(...args: (T[] | ((item: T) => unknown))[]): T[
 	const output = mainInput.filter((item) => arrayToComparewith.includes(iteratee(item)));
 	return output;
 };
+
+export const isEqual = (firstArgument: any, secondArgument: any): boolean => {
+	if (typeof firstArgument !== typeof secondArgument) return false;
+	if (firstArgument === null || secondArgument === null) return firstArgument === secondArgument;
+	if (typeof firstArgument !== 'object') return firstArgument === secondArgument;
+
+	if (Array.isArray(firstArgument) && Array.isArray(secondArgument)) {
+		if (firstArgument.length !== secondArgument.length) return false;
+		let _isEqual = true;
+		for (let i = 0; i < firstArgument.length; i++) {
+			_isEqual = isEqual(firstArgument[i], secondArgument[i]);
+			if (_isEqual === false) {
+				return false;
+			}
+		}
+		return _isEqual;
+	}
+
+	if (!Array.isArray(firstArgument) && !Array.isArray(secondArgument)) {
+		const firstArgumentKeys = Object.keys(firstArgument);
+		const secondArgumentKeys = Object.keys(secondArgument);
+		if (firstArgumentKeys.length !== secondArgumentKeys.length) return false;
+		if (firstArgumentKeys.toString() !== secondArgumentKeys.toString()) return false;
+
+		let _isEqual = true;
+		for (const key of firstArgumentKeys) {
+			_isEqual = isEqual(firstArgument[key], secondArgument[key]);
+			if (_isEqual === false) break;
+		}
+		return _isEqual;
+	}
+
+	return false;
+};
