@@ -1,6 +1,6 @@
 import { cn } from '@/lib';
 import { cva, VariantProps } from 'class-variance-authority';
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
 import { Button } from '../Button';
 import { DropdownContent, MenuItem } from './DropdownContent';
 
@@ -24,6 +24,7 @@ export interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement>, Varia
 	trigger?: 'hover' | 'click';
 	closeOnSelect?: boolean;
 	data?: MenuItem[];
+	renderItem?: (props: MenuItem) => ReactNode;
 }
 
 export const DropdownMenu = ({
@@ -32,6 +33,7 @@ export const DropdownMenu = ({
 	trigger,
 	closeOnSelect,
 	data,
+	renderItem,
 	...props
 }: DropdownMenuProps) => {
 	const [isShowDropdown, setIsShowDopdown] = useState(false);

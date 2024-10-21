@@ -4,29 +4,6 @@ import { DropdownMenu } from '../../components/DropdownMenu/DropdownMenu';
 
 type DropdownMenuProps = ComponentProps<typeof DropdownMenu>;
 
-// const DATA = [
-// 	{
-// 		key: 1,
-// 		label: 'Option 1',
-// 	},
-// 	{
-// 		key: 2,
-// 		label: 'Option 2',
-// 	},
-// 	{
-// 		key: 3,
-// 		label: 'Option 3',
-// 	},
-// 	{
-// 		key: 4,
-// 		label: 'Option 4',
-// 	},
-// 	{
-// 		key: 5,
-// 		label: 'Option 5',
-// 	},
-// ];
-
 const DATA: MenuItem[] = [
 	{
 		key: 1,
@@ -70,7 +47,14 @@ const DATA: MenuItem[] = [
 	},
 ] as MenuItem[];
 
-export const DropdownMenuStory = ({ data = DATA, trigger, closeOnSelect, variant, ...props }: DropdownMenuProps) => {
+export const DropdownMenuStory = ({
+	data = DATA,
+	trigger,
+	closeOnSelect,
+	variant,
+	renderItem,
+	...props
+}: DropdownMenuProps) => {
 	return (
 		<div className='h-[50vh]'>
 			<DropdownMenu
@@ -78,6 +62,7 @@ export const DropdownMenuStory = ({ data = DATA, trigger, closeOnSelect, variant
 				closeOnSelect={closeOnSelect}
 				variant={variant}
 				data={data}
+				renderItem={renderItem}
 				{...props}
 			/>
 		</div>

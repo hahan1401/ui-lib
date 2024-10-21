@@ -8,6 +8,7 @@ export interface MenuItem {
 	label: string | ReactNode;
 	variant?: 'default' | 'secondary';
 	children?: MenuItem[];
+	renderItem?: (props: MenuItem) => ReactNode;
 }
 
 const dropdownContentVariants = cva('rounded-lg border border-border', {
@@ -25,9 +26,10 @@ interface DropdownContentProps
 	onSelect?: (closeOnSelect: boolean) => void;
 	closeOnSelect?: boolean;
 	data?: MenuItem[];
+	renderItem?: (props: { item?: MenuItem; props: { onClick?: () => void; active?: boolean } }) => ReactNode;
 }
 
-export const DropdownContent = ({ data, variant, onSelect, closeOnSelect }: DropdownContentProps) => {
+export const DropdownContent = ({ data, variant, onSelect, closeOnSelect, renderItem }: DropdownContentProps) => {
 	const [activeKey, setActiveKey] = useState<MenuItem['key'] | undefined>();
 
 	return data && data.length > 0 ? (
@@ -46,6 +48,7 @@ export const DropdownContent = ({ data, variant, onSelect, closeOnSelect }: Drop
 						setActiveKey(item?.key);
 						onSelect?.(!!closeOnSelect);
 					}}
+					renderItem={renderItem}
 					variant={variant}
 				/>
 			))}

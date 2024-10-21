@@ -1,6 +1,6 @@
 import { DownArrow } from '@/components/ui';
 import { cva, VariantProps } from 'class-variance-authority';
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
 import { MenuItem } from '../DropdownContent';
 import styles from './styles.module.scss';
 //first:rounded-t-lg last:rounded-b-lg
@@ -28,6 +28,7 @@ interface DropdownItemProps
 	onSelect?: (item?: MenuItem) => void;
 	activeKey?: MenuItem['key'];
 	childrenPaddingX?: number;
+	renderItem?: (props: { item?: MenuItem; props: { onClick?: () => void; active?: boolean } }) => ReactNode;
 }
 
 export const DropdownItem = ({
@@ -36,38 +37,44 @@ export const DropdownItem = ({
 	activeKey,
 	variant = 'default',
 	childrenPaddingX = 8,
+	renderItem,
 }: DropdownItemProps) => {
 	const paddingX = childrenPaddingX;
 	const hasSubmenu = !!item?.children?.length;
 
 	const [isShowSubMenu, setIsShowSubMenu] = useState(false);
 
+	const onClickItem = () => {
+		hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onSelect?.(item);
+	};
+
 	return (
 		<>
-			<div
-				className={dropdownItemVariants({
-					variant,
-					active: activeKey === item?.key,
-				})}
-				style={{
-					paddingLeft: childrenPaddingX,
-					paddingRight: childrenPaddingX,
-				}}
-				onClick={(e) => {
-					e.preventDefault();
-					hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onSelect?.(item);
-				}}
-			>
-				<div className={`flex items-center gap-1 ${styles['item-label']}`}>
-					<span>{item?.label}</span>
-					{hasSubmenu && (
-						<DownArrow
-							className='arrow'
-							data-open={isShowSubMenu}
-						/>
-					)}
+			{typeof renderItem === 'function' ? (
+				renderItem?.({ item, props: { onClick: onClickItem, active: activeKey === item?.key } })
+			) : (
+				<div
+					className={dropdownItemVariants({
+						variant,
+						active: activeKey === item?.key,
+					})}
+					style={{
+						paddingLeft: childrenPaddingX,
+						paddingRight: childrenPaddingX,
+					}}
+					onClick={onClickItem}
+				>
+					<div className={`flex items-center gap-1 ${styles['item-label']}`}>
+						<span>{item?.label}</span>
+						{hasSubmenu && (
+							<DownArrow
+								className='arrow'
+								data-open={isShowSubMenu}
+							/>
+						)}
+					</div>
 				</div>
-			</div>
+			)}
 			{hasSubmenu && (
 				<div
 					className={`${styles['dropdown-item-group-wrapper']}`}
@@ -81,6 +88,7 @@ export const DropdownItem = ({
 							variant={variant}
 							childrenPaddingX={paddingX + childrenPaddingX}
 							onSelect={onSelect}
+							renderItem={renderItem}
 						/>
 					))}
 				</div>
