@@ -59,7 +59,7 @@ export const DropdownMenu = ({
 					trigger === 'hover' && setIsShowDopdown(false);
 				}}
 				onBlur={() => {
-					// setIsShowDopdown(false);
+					setIsShowDopdown(false);
 				}}
 			>
 				<Button>Target</Button>
@@ -76,7 +76,7 @@ export const DropdownMenu = ({
 			>
 				<DropdownContent
 					variant={variant}
-					onSelectItem={onSelectItem}
+					onSelect={onSelectItem}
 					closeOnSelect={closeOnSelect}
 					data={data}
 				/>

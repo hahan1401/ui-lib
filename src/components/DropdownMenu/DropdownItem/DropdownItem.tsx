@@ -21,16 +21,18 @@ const dropdownItemVariants = cva('cursor-pointer py-4 ', {
 	],
 });
 
-interface DropdownItemProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof dropdownItemVariants> {
+interface DropdownItemProps
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'>,
+		VariantProps<typeof dropdownItemVariants> {
 	item?: MenuItem;
-	onClickItem?: (item?: MenuItem) => void;
+	onSelect?: (item?: MenuItem) => void;
 	activeKey?: MenuItem['key'];
 	childrenPaddingX?: number;
 }
 
 export const DropdownItem = ({
 	item,
-	onClickItem,
+	onSelect,
 	activeKey,
 	variant = 'default',
 	childrenPaddingX = 8,
@@ -53,7 +55,7 @@ export const DropdownItem = ({
 				}}
 				onClick={(e) => {
 					e.preventDefault();
-					hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onClickItem?.(item);
+					hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onSelect?.(item);
 				}}
 			>
 				<div className={`flex items-center gap-1 ${styles['item-label']}`}>
@@ -68,7 +70,7 @@ export const DropdownItem = ({
 			</div>
 			{hasSubmenu && (
 				<div
-					className={`${styles['dropdown-item-group-wrapper']} transition-all`}
+					className={`${styles['dropdown-item-group-wrapper']}`}
 					data-show={isShowSubMenu}
 				>
 					{item?.children?.map((item) => (
@@ -78,7 +80,7 @@ export const DropdownItem = ({
 							activeKey={activeKey}
 							variant={variant}
 							childrenPaddingX={paddingX + childrenPaddingX}
-							onClickItem={onClickItem}
+							onSelect={onSelect}
 						/>
 					))}
 				</div>

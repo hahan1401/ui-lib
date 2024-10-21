@@ -19,13 +19,15 @@ const dropdownContentVariants = cva('rounded-lg border border-border', {
 	},
 });
 
-interface DropdownContentProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof dropdownContentVariants> {
-	onSelectItem?: (closeOnSelect: boolean) => void;
+interface DropdownContentProps
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'>,
+		VariantProps<typeof dropdownContentVariants> {
+	onSelect?: (closeOnSelect: boolean) => void;
 	closeOnSelect?: boolean;
 	data?: MenuItem[];
 }
 
-export const DropdownContent = ({ data, variant, onSelectItem, closeOnSelect }: DropdownContentProps) => {
+export const DropdownContent = ({ data, variant, onSelect, closeOnSelect }: DropdownContentProps) => {
 	const [activeKey, setActiveKey] = useState<MenuItem['key'] | undefined>();
 
 	return data && data.length > 0 ? (
@@ -40,9 +42,9 @@ export const DropdownContent = ({ data, variant, onSelectItem, closeOnSelect }: 
 					key={item.key}
 					item={item}
 					activeKey={activeKey}
-					onClickItem={(item) => {
+					onSelect={(item) => {
 						setActiveKey(item?.key);
-						onSelectItem?.(!!closeOnSelect);
+						onSelect?.(!!closeOnSelect);
 					}}
 					variant={variant}
 				/>
