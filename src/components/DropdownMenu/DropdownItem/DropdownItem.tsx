@@ -25,7 +25,7 @@ interface DropdownItemProps
 	extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'>,
 		VariantProps<typeof dropdownItemVariants> {
 	item?: MenuItem;
-	onSelect?: (item?: MenuItem) => void;
+	onSelect?: (key?: MenuItem['key'], item?: MenuItem) => void;
 	activeKey?: MenuItem['key'];
 	childrenPaddingX?: number;
 	renderItem?: (props: { item?: MenuItem; props: { onClick?: () => void; active?: boolean } }) => ReactNode;
@@ -45,7 +45,7 @@ export const DropdownItem = ({
 	const [isShowSubMenu, setIsShowSubMenu] = useState(false);
 
 	const onClickItem = () => {
-		hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onSelect?.(item);
+		hasSubmenu ? setIsShowSubMenu((prev) => !prev) : onSelect?.(item?.key ?? '', item);
 	};
 
 	return (

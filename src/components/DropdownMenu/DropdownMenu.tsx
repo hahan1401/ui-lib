@@ -20,11 +20,16 @@ const dropdownMenuVariants = cva('', {
 	},
 });
 
-export interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof dropdownMenuVariants> {
+export interface DropdownMenuProps
+	extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'>,
+		VariantProps<typeof dropdownMenuVariants> {
 	trigger?: 'hover' | 'click';
 	closeOnSelect?: boolean;
 	data?: MenuItem[];
 	renderItem?: (props: MenuItem) => ReactNode;
+	activeKey?: MenuItem['key'];
+	open?: boolean;
+	onSelect?: (key?: MenuItem['key'], item?: MenuItem) => void;
 }
 
 export const DropdownMenu = ({
@@ -33,16 +38,14 @@ export const DropdownMenu = ({
 	trigger,
 	closeOnSelect,
 	data,
+	accessKey,
+	activeKey,
 	renderItem,
+	open,
+	onSelect,
 	...props
 }: DropdownMenuProps) => {
-	const [isShowDropdown, setIsShowDopdown] = useState(false);
-
-	const onSelectItem = (closeOnSelect: boolean) => {
-		if (closeOnSelect) {
-			setIsShowDopdown(false);
-		}
-	};
+	const [isShowDropdown, setIsShowDropdown] = useState(open);
 
 	return (
 		<div
@@ -52,16 +55,16 @@ export const DropdownMenu = ({
 			<div
 				onClick={(e) => {
 					e.preventDefault();
-					setIsShowDopdown((prev) => !prev);
+					setIsShowDropdown((prev) => !prev);
 				}}
 				onMouseEnter={() => {
-					trigger === 'hover' && setIsShowDopdown(true);
+					trigger === 'hover' && setIsShowDropdown(true);
 				}}
 				onMouseLeave={() => {
-					trigger === 'hover' && setIsShowDopdown(false);
+					trigger === 'hover' && setIsShowDropdown(false);
 				}}
 				onBlur={() => {
-					setIsShowDopdown(false);
+					setIsShowDropdown(false);
 				}}
 			>
 				<Button>Target</Button>
@@ -70,17 +73,19 @@ export const DropdownMenu = ({
 			<div
 				className={cn(`absolute inline-block min-w-64 ${isShowDropdown ? 'visible z-10' : 'invisible z-[-1]'}`)}
 				onMouseEnter={() => {
-					trigger === 'hover' && setIsShowDopdown(true);
+					trigger === 'hover' && setIsShowDropdown(true);
 				}}
 				onMouseLeave={() => {
-					trigger === 'hover' && setIsShowDopdown(false);
+					trigger === 'hover' && setIsShowDropdown(false);
 				}}
 			>
 				<DropdownContent
 					variant={variant}
-					onSelect={onSelectItem}
+					onSelect={onSelect}
 					closeOnSelect={closeOnSelect}
+					setIsShowDropdown={setIsShowDropdown}
 					data={data}
+					activeKey={activeKey}
 				/>
 			</div>
 		</div>
