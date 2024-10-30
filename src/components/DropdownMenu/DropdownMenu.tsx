@@ -30,6 +30,7 @@ export interface DropdownMenuProps
 	activeKey?: MenuItem['key'];
 	open?: boolean;
 	onSelect?: (key?: MenuItem['key'], item?: MenuItem) => void;
+	targetElement?: () => ReactNode;
 }
 
 export const DropdownMenu = ({
@@ -43,6 +44,7 @@ export const DropdownMenu = ({
 	renderItem,
 	open,
 	onSelect,
+	targetElement,
 	...props
 }: DropdownMenuProps) => {
 	const [isShowDropdown, setIsShowDropdown] = useState(open);
@@ -67,7 +69,7 @@ export const DropdownMenu = ({
 					setIsShowDropdown(false);
 				}}
 			>
-				<Button>Target</Button>
+				{targetElement?.() ?? <Button>Target</Button>}
 			</div>
 
 			<div

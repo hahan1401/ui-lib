@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
 import { DropdownMenuStory } from './DropdownMenuStory';
+import { Button } from '@/components';
 
 const metaData: Meta<typeof DropdownMenuStory> = {
 	title: 'Component/Dropdown menu',
@@ -137,10 +138,14 @@ const DATA = [
 <DropdownMenu
 	data={DATA}
 	renderItem={({item, props}) => <YourOwnComponent item={item} {...props} />}
+	targetElement: () => <Button>Custom target & dropdown</Button>
 />`,
 				language: 'jsx', // Display the source in JSX
 				type: 'auto', // Auto-detect the source code type
 			},
 		},
 	},
+	args: {
+		targetElement: () => <Button>Custom target & dropdown</Button>
+	}
 };
