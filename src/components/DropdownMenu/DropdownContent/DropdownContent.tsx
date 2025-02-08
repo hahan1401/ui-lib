@@ -8,7 +8,7 @@ export interface MenuItem {
 	label: string | ReactNode;
 	variant?: 'default' | 'secondary';
 	children?: MenuItem[];
-	renderItem?: (props: MenuItem) => ReactNode;
+	renderItem?: (props: { item?: MenuItem; props: { onClick?: () => void; active?: boolean } }) => ReactNode;
 }
 
 const dropdownContentVariants = cva('rounded-lg border border-border', {

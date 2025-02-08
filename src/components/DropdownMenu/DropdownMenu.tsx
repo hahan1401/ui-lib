@@ -26,7 +26,7 @@ export interface DropdownMenuProps
 	trigger?: 'hover' | 'click';
 	closeOnSelect?: boolean;
 	data?: MenuItem[];
-	renderItem?: (props: MenuItem) => ReactNode;
+	renderItem?: (props: { item?: MenuItem; props: { onClick?: () => void; active?: boolean } }) => ReactNode;
 	activeKey?: MenuItem['key'];
 	open?: boolean;
 	onSelect?: (key?: MenuItem['key'], item?: MenuItem) => void;
@@ -88,6 +88,7 @@ export const DropdownMenu = ({
 					setIsShowDropdown={setIsShowDropdown}
 					data={data}
 					activeKey={activeKey}
+					renderItem={renderItem}
 				/>
 			</div>
 		</div>
